@@ -2,6 +2,13 @@ package com.example.sabaq_app;
 
 
 
+import android.icu.text.DateFormat;
+import android.icu.text.SimpleDateFormat;
+import android.icu.util.Calendar;
+import android.util.Log;
+
+import java.util.Date;
+
 public class RecordClassManipulation {
 
     // Date datetime;
@@ -9,16 +16,19 @@ public class RecordClassManipulation {
     String Sabaq;
     String Sabqi;
     String Manzil;
-    //boolean isCorrect;
+
+    String RollNumber;
 
 
-    public RecordClassManipulation(String pName,    String pSabaq,    String pSabqi,    String pManzil) {
+    public RecordClassManipulation( String pName,    String pSabaq,    String pSabqi,    String pManzil, String pRollNumber) {
 
         //  this.datetime = datetime;
         Name= pName;
         Sabaq=pSabaq;
         Sabqi=pSabqi;
         Manzil=pManzil;
+        RollNumber=pRollNumber;
+        // Date = pDate;
 
     }
 
@@ -30,6 +40,7 @@ public class RecordClassManipulation {
         Sabaq="";
         Sabqi="";
         Manzil="";
+        RollNumber="";
 
     }
 
@@ -67,8 +78,22 @@ public class RecordClassManipulation {
     }
 
 
+    public String getRollNumber() {
+        return RollNumber;
+    }
+
+    public void setRollNumber(String rollNumber) {
+        RollNumber = rollNumber;
+    }
+
+/*   @Override
+    public String toString() {
+        return Name;
+    }*/
+
     @Override
     public String toString() {
-        return Name ;
+        return "Student Data:-\n Name:" + Name + "\n Date=" + RollNumber + "\n Sabaq=" + Sabaq+ "\n Sabqi=" + Sabqi+ "\n Manzil=" + Manzil
+                + "\n" +  "...................................." +"\n";
     }
 }
