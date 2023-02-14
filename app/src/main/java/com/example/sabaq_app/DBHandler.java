@@ -46,6 +46,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 + COLUMN_datetime + " TEXT"
                 //            + COLUMN_isCorrect + " INTEGER"
                 + ")";
+
         db.execSQL(sql);
     }
 
@@ -95,7 +96,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public List<RecordClassManipulation> selectAllresults() {
         List<RecordClassManipulation> totalresult = new ArrayList<>();
 
-        String sql = "select * from " + TABLE_NAME +" order by id DESC"  ;
+        String sql = "select * from " + TABLE_NAME + " order by id DESC"  ;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
@@ -156,9 +157,18 @@ public class DBHandler extends SQLiteOpenHelper {
 
     public String getSysTime(){
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Calendar cal = Calendar.getInstance();
-        String date=dateFormat.format(cal.getTime());
+        DateFormat dateFormat = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        }
+        Calendar cal = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            cal = Calendar.getInstance();
+        }
+        String date= null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            date = dateFormat.format(cal.getTime());
+        }
         return date;
 
     }
